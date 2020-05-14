@@ -8,14 +8,6 @@
 
 #import "ViewController.h"
 
-//raymone:常量如果是只在本文件内使用，建议加上static修饰
-//raymone:空格和换行要多使用
-//raymone:代码架构的评析：
-//  整体上，是把所有的业务逻辑都放到ViewController里面，是典型的MVC架构，有个弊端就是会让ViewController臃肿。
-//  更好的方式是，把业务数据逻辑的处理放到另一个类中去处理。建议使用MVP或者MVVM的方式来写。
-//      好处是:1、ViewController精简，只承担数据和View的桥梁作用
-//            2、业务逻辑代码与UI分离，易于维护和扩展。即如果逻辑层有变(例如重构或者需求变更)，不需要对UI的类大动。
-//            3、更易于对UI类型去写测试用例，可直接对业务逻辑类进行功能相关的测试用例覆盖。
 static NSString * const reuseidentifier = @"cell";
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -231,7 +223,7 @@ static NSString * const reuseidentifier = @"cell";
 
 #pragma mark - other
  
-//raymone:这里每个case内的处理都有抽出到一个方法中，避免圈复杂度过大。
+
 //这四个函数是用来根据手势来找到某一行某一列的元素中间全部为0相距最远的元素为0的位置
 //也就是说根据手势移动的时候，某一行某一列元素应该移到何处
 - (NSInteger)downMove:(NSInteger)numberInRow {
@@ -349,7 +341,7 @@ static NSString * const reuseidentifier = @"cell";
     return YES;
 }
 
-//raymone:方法的命名要以小写字母开头
+
 //这个函数用来随机生成一个元素为0的index，然后cellList[index]赋值为2，同时从_reserveZero移除该index
 - (void)randomGenerate {
     int temp = arc4random()%(_reserveZero.count);
@@ -392,7 +384,7 @@ static NSString * const reuseidentifier = @"cell";
 //处理手势向下的逻辑
 - (void)handleDown
 {
-    //raymone:复杂的计算逻辑，可以添加注释来辅助说明，便于其他人理解。
+   
     //先融合
     //从第一列开始，第一列从第三行开始，找到离自己最近的不为0的元素（就是toFindLast:WithDirection:这个函数的返回值加1）
     //与这个元素的数字对比，如果两个数字相等，那么处于下方的元素的数字就要翻倍，并且相应index的_isModified要置为1，
@@ -434,7 +426,7 @@ static NSString * const reuseidentifier = @"cell";
     }
 }
 
-//raymone:这里的代码空格和分行也按照上面的处理一下，复杂的逻辑用注释辅助说明
+
 //下的处理逻辑和上一样，就是要先从第二行开始检查
 - (void)handleUp
 {
@@ -469,7 +461,7 @@ static NSString * const reuseidentifier = @"cell";
     }
 }
 
-//raymone:这里的代码空格和分行也按照上面的处理一下，复杂的逻辑用注释辅助说明
+
 //左的逻辑也和下的一样，就是要先从第二列检查
 - (void) handleLeft{
     for (int i=1;i<4;i++) {
@@ -503,7 +495,7 @@ static NSString * const reuseidentifier = @"cell";
     }
 }
 
-//raymone:这里的代码空格和分行也按照上面的处理一下，复杂的逻辑用注释辅助说明
+
 //右的逻辑和下的一样，就是要从第三列开始检查
 - (void) handleRight{
     for (int i=2;i>=0;i--) {

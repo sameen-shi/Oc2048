@@ -12,8 +12,7 @@
 
 @interface ViewController : UIViewController
 
-//raymone:属性的定义要添加注释，注释规范见oc规范
-//raymone:空格和换行要多使用
+
 
 //2048的view
 @property (nonatomic, strong) UICollectionView *my2048;
@@ -41,11 +40,11 @@
 @property (nonatomic, strong) NSMutableArray *reserveZero;
 //这个button在游戏结束的时候会显示出来
 @property (nonatomic, strong) UIButton *toDisplay;
-//raymone:@property要添加上修饰符
+
 //这个用来定义是否发生了元素移动或者融合
 @property (nonatomic, assign) BOOL flag;
 
-//raymone:方法的定义要添加注释
+
 //这个方法用来初始化cellList，isModified，reserveZero
 -(void)initData;
 //这个方法根据手势作出相应的回应
